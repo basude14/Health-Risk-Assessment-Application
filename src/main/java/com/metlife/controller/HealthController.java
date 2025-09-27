@@ -50,6 +50,7 @@ public class HealthController {
     // 3️⃣ Generate insights from Azure OpenAI
     @PostMapping(value="/generate-insights", produces=MediaType.APPLICATION_JSON_VALUE)
     public Mono<String> generateInsights(@RequestBody HealthForm form) {
+        repository.save(form);
 
         String prompt = buildPrompt(form);
 
